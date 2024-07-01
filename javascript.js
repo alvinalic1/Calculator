@@ -18,7 +18,7 @@ const operatorObject ={
     "+" : add,
     "-" : subtract,
     "*" : multiply,
-    "/" : divide
+    "/" : divide()
 }
 
 
