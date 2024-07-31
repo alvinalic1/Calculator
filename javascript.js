@@ -42,4 +42,13 @@ console.log(operate(1, "*", 100));
 console.log(operate(50, "-", 5));
 console.log(operate(0, "-", 5));
 
+let one = document.getElementById("1");
+let largeDisplay = document.getElementById("Value");
+let miniDisplay = document.getElementById("mini-display")
+one.addEventListener("click", () =>{
+    let number = 1;
+    largeDisplay.value += largeDisplay.value = number;
+    miniDisplay.value = largeDisplay.value;
+    let  = largeDisplay.value;
+})
 
