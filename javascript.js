@@ -22,9 +22,10 @@ const operatorObject ={
 }
 
 
-let number1 = 0;
+let number1 = "";
 let operator;
-let number2 = 0;
+let number2 = "";
+let total = "";
 let operatorclicked = false;
 
 const operate = function(number1, operator, number2){
@@ -85,7 +86,8 @@ for(let i = 0; i < otherButtons.length; i++){
     })
 }
     
-//currently only single digits are computing correctly, figure out how to store multiple digits into one number
+
+//figure out how to do multiple operations 
 for (let i = 0; i <= 9; i++) {
     numberButtonArray[i].addEventListener("click", () => {
         let number = i;
@@ -99,35 +101,27 @@ for (let i = 0; i <= 9; i++) {
     })
 };
 
+clear.addEventListener("click", () =>{
+    number1 = "";
+    number2 = "";
+    largeDisplay.value = "";
+    miniDisplay.value = "";
+    operatorclicked = false;
+})
 
-// addition.addEventListener("click", () =>{
-//     operator = "+";
-//     operatorclicked = true;
-//     miniDisplay.value += operator
-//     largeDisplay.value='';
-// })
-// multiplication.addEventListener("click", () =>{
-//     operator = "*";
-//     operatorclicked = true;
-//     miniDisplay.value += operator;
-//     largeDisplay.value = '';
-// })
-// subtraction.addEventListener("click", () =>{
-//     operator = "-";
-//     operatorclicked = true;
-//     miniDisplay.value += operator;
-//     largeDisplay.value = '';
-// })
-// division.addEventListener("click", () =>{
-//     operator = "/";
-//     operatorclicked = true;
-//     miniDisplay.value += operator;
-//     largeDisplay.value = '';
-// })
+
 equals.addEventListener("click", () =>{
     console.log(number1);
     console.log(operator);
     console.log(number2);
-    largeDisplay.value = operate(Number(number1), operator, Number(number2));
+    console.log(Number(total));
+
+    if(Number(total) != 0){
+        largeDisplay.value = operate(Number(total), operator, Number(number2));
+        total = largeDisplay.value;
+    }
+    else{
+        largeDisplay.value = operate(Number(number1), operator, Number(number2));
+    }
 })
 
