@@ -47,7 +47,7 @@ console.log(operate(0, "-", 5));
 
 let one = document.getElementById("1");
 let two = document.getElementById("2");
-let three = document.getElementById("3");
+let three = document.getElementById("three");
 let four = document.getElementById("four");
 let five = document.getElementById("five");
 let six = document.getElementById("six");
@@ -69,41 +69,65 @@ let equals = document.getElementById("equals");
 let largeDisplay = document.getElementById("Value");
 let miniDisplay = document.getElementById("mini-display")
 
+const numberButtonArray = [zero, one, two, three, four, five, six, seven, eight, nine];
+const otherButtons = [[addition, "+"], [subtraction, "-"], [multiplication, "*"], [division, "/"]]
 
-one.addEventListener("click", () =>{
-    let number = "1";
-    largeDisplay.value += number;
-    miniDisplay.value += number;
-    if(operatorclicked === false){
-        number1 += number;
-    }else{
-        number2 += number;
-    }
-})
+for(let i = 0; i < otherButtons.length; i++){
+    let currentButton = otherButtons[i][0];
+    console.log(currentButton);
+    let currentOperator = otherButtons[i][1];
+    console.log(currentOperator)
+    currentButton.addEventListener("click", () =>{
+        operator = currentOperator;
+        operatorclicked = true;
+        miniDisplay.value += operator
+        largeDisplay.value='';
+    })
+}
+    
+//currently only single digits are computing correctly, figure out how to store multiple digits into one number
+for (let i = 0; i <= 9; i++) {
+    numberButtonArray[i].addEventListener("click", () => {
+        let number = i;
+        largeDisplay.value += number;
+        miniDisplay.value += number;
+        if (operatorclicked === false) {
+            number1 += number;
+        } else {
+            number2 += number;
+        }
+    })
+};
 
-addition.addEventListener("click", () =>{
-    operator = "+";
-    operatorclicked = true;
-    miniDisplay.value += operator
-    largeDisplay.value='';
-})
 
-two.addEventListener("click", () =>{
-    let number = "2";
-    largeDisplay.value += number;
-    miniDisplay.value += number;
-    if(operatorclicked === false){
-        number1 += number;
-    }else{
-        number2 += number;
-    }
-})
-
+// addition.addEventListener("click", () =>{
+//     operator = "+";
+//     operatorclicked = true;
+//     miniDisplay.value += operator
+//     largeDisplay.value='';
+// })
+// multiplication.addEventListener("click", () =>{
+//     operator = "*";
+//     operatorclicked = true;
+//     miniDisplay.value += operator;
+//     largeDisplay.value = '';
+// })
+// subtraction.addEventListener("click", () =>{
+//     operator = "-";
+//     operatorclicked = true;
+//     miniDisplay.value += operator;
+//     largeDisplay.value = '';
+// })
+// division.addEventListener("click", () =>{
+//     operator = "/";
+//     operatorclicked = true;
+//     miniDisplay.value += operator;
+//     largeDisplay.value = '';
+// })
 equals.addEventListener("click", () =>{
     console.log(number1);
     console.log(operator);
     console.log(number2);
     largeDisplay.value = operate(Number(number1), operator, Number(number2));
 })
-
 
