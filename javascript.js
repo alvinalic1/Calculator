@@ -22,10 +22,9 @@ const operatorObject ={
 }
 
 
-let number1 = "";
+let number1 = '';
 let operator;
-let number2 = "";
-let total = "";
+let number2 = '';
 let operatorclicked = false;
 
 const operate = function(number1, operator, number2){
@@ -72,22 +71,27 @@ let miniDisplay = document.getElementById("mini-display")
 
 const numberButtonArray = [zero, one, two, three, four, five, six, seven, eight, nine];
 const otherButtons = [[addition, "+"], [subtraction, "-"], [multiplication, "*"], [division, "/"]]
+let allElementsClicked = [];
 
 for(let i = 0; i < otherButtons.length; i++){
     let currentButton = otherButtons[i][0];
-    console.log(currentButton);
     let currentOperator = otherButtons[i][1];
-    console.log(currentOperator)
     currentButton.addEventListener("click", () =>{
         operator = currentOperator;
+        let lastOperator = '';
+        let first = 0;
+        let last = allElementsClicked.length - 1;
+        let passedOperator = false;
         operatorclicked = true;
         miniDisplay.value += operator
         largeDisplay.value='';
+
+
+        
     })
 }
     
-
-//figure out how to do multiple operations 
+//currently only single digits are computing correctly, figure out how to store multiple digits into one number
 for (let i = 0; i <= 9; i++) {
     numberButtonArray[i].addEventListener("click", () => {
         let number = i;
@@ -102,26 +106,18 @@ for (let i = 0; i <= 9; i++) {
 };
 
 clear.addEventListener("click", () =>{
-    number1 = "";
-    number2 = "";
-    largeDisplay.value = "";
-    miniDisplay.value = "";
+    number1 = '';
+    number2 = '';
     operatorclicked = false;
+    miniDisplay.value = '';
+    largeDisplay.value = '';
 })
-
 
 equals.addEventListener("click", () =>{
     console.log(number1);
     console.log(operator);
     console.log(number2);
-    console.log(Number(total));
 
-    if(Number(total) != 0){
-        largeDisplay.value = operate(Number(total), operator, Number(number2));
-        total = largeDisplay.value;
-    }
-    else{
-        largeDisplay.value = operate(Number(number1), operator, Number(number2));
-    }
+    largeDisplay.value = operate(Number(number1), operator, Number(number2));
+    
 })
-
