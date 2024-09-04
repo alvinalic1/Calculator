@@ -24,8 +24,12 @@ const operatorObject ={
 
 let number1 = '';
 let operator;
+let total = '';
 let number2 = '';
 let operatorclicked = false;
+
+let currentNumber = '';
+let tit = '';
 
 const operate = function(number1, operator, number2){
 
@@ -33,7 +37,6 @@ const operate = function(number1, operator, number2){
     let correctFuntion = operatorObject[operation];
     return correctFuntion(number1, number2);
 }
-
 
 console.log(operate(5, "-", 5));
 console.log(operate(5, "*", 5));
@@ -77,19 +80,31 @@ for(let i = 0; i < otherButtons.length; i++){
     let currentButton = otherButtons[i][0];
     let currentOperator = otherButtons[i][1];
     currentButton.addEventListener("click", () =>{
-        operator = currentOperator;
-        let lastOperator = '';
-        let first = 0;
-        let last = allElementsClicked.length - 1;
-        let passedOperator = false;
-        operatorclicked = true;
-        miniDisplay.value += operator
-        largeDisplay.value='';
+        if(operatorclicked == true){
+            total = operate(Number(number1), operator, Number(number2));
+            largeDisplay.value = '';
+            operator = currentOperator;
+            miniDisplay.value = total + operator;
+            number1 = total;
+            number2 = '';
+            operatorclicked = false;
 
+            }else{
+                operator = currentOperator;
+                operatorclicked = true;
+                miniDisplay.value += operator
+                largeDisplay.value='';
+            }
 
+       
         
-    })
+    });
+    console.log("OPERATORS");
+        console.log(number1);
+        console.log(operator);
+        console.log(number2);
 }
+
     
 //currently only single digits are computing correctly, figure out how to store multiple digits into one number
 for (let i = 0; i <= 9; i++) {
@@ -97,7 +112,7 @@ for (let i = 0; i <= 9; i++) {
         let number = i;
         largeDisplay.value += number;
         miniDisplay.value += number;
-        if (operatorclicked === false) {
+        if (operatorclicked == false && total == '') {
             number1 += number;
         } else {
             number2 += number;
@@ -108,16 +123,26 @@ for (let i = 0; i <= 9; i++) {
 clear.addEventListener("click", () =>{
     number1 = '';
     number2 = '';
+    total = '';
     operatorclicked = false;
     miniDisplay.value = '';
     largeDisplay.value = '';
 })
 
 equals.addEventListener("click", () =>{
+    console.log("EQUALS")
     console.log(number1);
     console.log(operator);
     console.log(number2);
-
-    largeDisplay.value = operate(Number(number1), operator, Number(number2));
+    if(total == ''){
+        largeDisplay.value = operate(Number(number1), operator, Number(number2));
+    }else{
+        total = operate(Number(total), operator, Number(number2));
+        number2 ='';
+        miniDisplay.value = total;
+        largeDisplay.value = total;
+        operatorclicked = false;
+    }
+    
     
 })
