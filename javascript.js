@@ -119,7 +119,25 @@ pos_neg.addEventListener("click", () => {
 })
 
 percent.addEventListener("click", () =>{
-    
+    if(operatorclicked == true && total == ''){
+        number2 = number2 / 100;
+        largeDisplay.value = number2; 
+        if(miniDisplay.value == ''){
+            miniDisplay.value += number2;
+        }else{  
+            miniDisplay.value = number1 + operator + number2;
+        }
+     
+    }else if(total !== ''){
+        number2 = number2 /100;
+        largeDisplay.value = number2;
+        miniDisplay.value = total + operator + number2; 
+    }else{
+        number1 = number1 /100;
+        largeDisplay.value = number1;
+        miniDisplay.value = number1;
+    }
+
 })
 
     
