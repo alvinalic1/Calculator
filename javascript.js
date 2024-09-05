@@ -114,7 +114,7 @@ pos_neg.addEventListener("click", () => {
     }else{
         number1 = number1 * -1;
         largeDisplay.value = number1;
-        miniDisplay.value += number1;
+        miniDisplay.value = number1;
     }
 })
 
