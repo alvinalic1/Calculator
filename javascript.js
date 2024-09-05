@@ -28,8 +28,6 @@ let total = '';
 let number2 = '';
 let operatorclicked = false;
 
-let currentNumber = '';
-let tit = '';
 
 const operate = function(number1, operator, number2){
 
@@ -94,16 +92,34 @@ for(let i = 0; i < otherButtons.length; i++){
                 operatorclicked = true;
                 miniDisplay.value += operator
                 largeDisplay.value='';
-            }
-
-       
-        
+            } 
     });
-    console.log("OPERATORS");
-        console.log(number1);
-        console.log(operator);
-        console.log(number2);
+
 }
+
+pos_neg.addEventListener("click", () => {
+    if(operatorclicked == true && total == ''){
+        number2 = number2 * -1;
+        largeDisplay.value = number2; 
+        if(miniDisplay.value == ''){
+            miniDisplay.value += number2;
+        }else{  
+            miniDisplay.value = number1 + operator + number2;
+        }
+        
+    }else if(total !== ''){
+        number2 = number2 * -1;
+        largeDisplay.value = number2;
+        miniDisplay.value = total + operator + number2;
+        // total = total * -1;
+        // largeDisplay.value = total;
+        // miniDisplay.value = total + operator + number2; 
+    }else{
+        number1 = number1 * -1;
+        largeDisplay.value = number1;
+        miniDisplay.value += number1;
+    }
+})
 
     
 //currently only single digits are computing correctly, figure out how to store multiple digits into one number
