@@ -118,6 +118,10 @@ pos_neg.addEventListener("click", () => {
     }
 })
 
+percent.addEventListener("click", () =>{
+    
+})
+
     
 //currently only single digits are computing correctly, figure out how to store multiple digits into one number
 for (let i = 0; i <= 9; i++) {
