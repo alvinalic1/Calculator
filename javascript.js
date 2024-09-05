@@ -106,14 +106,11 @@ pos_neg.addEventListener("click", () => {
         }else{  
             miniDisplay.value = number1 + operator + number2;
         }
-        
+     
     }else if(total !== ''){
         number2 = number2 * -1;
         largeDisplay.value = number2;
-        miniDisplay.value = total + operator + number2;
-        // total = total * -1;
-        // largeDisplay.value = total;
-        // miniDisplay.value = total + operator + number2; 
+        miniDisplay.value = total + operator + number2; 
     }else{
         number1 = number1 * -1;
         largeDisplay.value = number1;
