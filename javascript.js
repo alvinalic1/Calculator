@@ -140,6 +140,20 @@ percent.addEventListener("click", () =>{
 
 })
 
+decimal.addEventListener("click", () =>{
+    let dec = '.'
+    if(operatorclicked == false){
+        number1 += dec;
+        largeDisplay.value += dec;
+        miniDisplay.value += dec;
+        
+    }else if(operatorclicked == true)
+        number2 += dec
+        largeDisplay.value += dec;
+        miniDisplay.value += dec;
+    
+})
+
     
 //currently only single digits are computing correctly, figure out how to store multiple digits into one number
 for (let i = 0; i <= 9; i++) {
