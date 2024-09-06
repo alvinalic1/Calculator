@@ -79,6 +79,10 @@ for(let i = 0; i < otherButtons.length; i++){
     let currentOperator = otherButtons[i][1];
     currentButton.addEventListener("click", () =>{
         if(operatorclicked == true){
+            console.log(number1);
+            console.log(operator);
+            console.log(number2);
+
             total = operate(Number(number1), operator, Number(number2));
             largeDisplay.value = '';
             operator = currentOperator;
@@ -108,6 +112,7 @@ pos_neg.addEventListener("click", () => {
         }
      
     }else if(total !== ''){
+       
         number2 = number2 * -1;
         largeDisplay.value = number2;
         miniDisplay.value = total + operator + number2; 
