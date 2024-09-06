@@ -143,7 +143,6 @@ percent.addEventListener("click", () =>{
 decimal.addEventListener("click", () =>{
     let dec = '.';
     if(operatorclicked == false){
-        
         number1 += dec;
         largeDisplay.value += dec;
         miniDisplay.value += dec;
